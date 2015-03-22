@@ -25,21 +25,21 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 ## The function "cacheSolve" calculates the inverse of the special matrix created with makeCacheMatrix. 
-## It first checks if the inverse of makeCacheMatrix has already been calculated. 
-## If so, it gets the inverse of makeCacheMatrix from the cache and skips the computation. 
-## Otherwise, it calculates the inverse of the data and sets its value in the cache using the "setinverse" function.
+## It first checks if the value of the inverse of the matrix has already been calculated. 
+## If so, it gets this value from the cache and skips the computation. 
+## Otherwise, it calculates the inverse and sets its value in the cache using the "setinverse" function.
 ## The function "cacheSolve" assumes that the matrix is always invertible.
 
 cacheSolve <- function(x, ...) {
         m <- x$getinverse()
         if(!is.null(m)) {                        ## If the old cache value DOES exist
                 message("getting cached data")   ## Prints the message "getting cached data"
-                return(m)                        ## Returns the inverse of makeCacheMatrix from the cache
+                return(m)                        ## Returns the value of the inverse from the cache
         }
-        data <- x$get()                          ## If the old cache value DOES NOT exist, it gets the value of the data
-        m <- solve(data,...)                     ## Calculates the inverse of the data using the "solve" function
-        x$setinverse(m)                          ## Use "setinverse" function to set the inverse of the data in the cache 
-        m                                        ## Returns the value of the inverse of the data
+        data <- x$get()                          ## If the old cache value DOES NOT exist, it gets the value of the matrix
+        m <- solve(data,...)                     ## Calculates the inverse of the matrix using the "solve" function
+        x$setinverse(m)                          ## Uses the "setinverse" function to set the inverse of the matrix in the cache 
+        m                                        ## Returns the value of the inverse of the matrix
 }
 
 ## Example:
@@ -65,5 +65,5 @@ cacheSolve <- function(x, ...) {
 ##       [,1] [,2]
 ## [1,]   -2  1.5
 ## [2,]    1 -0.5
-## Retrieves & assigns old cache value in the second run
+## Retrieves & assigns the old cache value in the second run
 
