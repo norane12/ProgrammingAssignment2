@@ -11,7 +11,7 @@
  
 makeCacheMatrix <- function(x = matrix()) {            ## Initialization of the function which requires a matrix as its only argument
         m <- NULL                                      ## Initializes the 'inverse' variable to  NULL
-        set <- function(y) {                           ## 1. Create a function "set" to set the value of the matrix
+        set <- function(y) {                           ## 1. Creates a function "set" to set the value of the matrix
                 x <<- y                                ## Sets 'x' for the function environment to 'y'
                 m <<- NULL                             ## Sets 'm' for the 'makeCacheMatrix' environment to NULL
         }
@@ -34,7 +34,7 @@ makeCacheMatrix <- function(x = matrix()) {            ## Initialization of the 
 ## Otherwise, it calculates the inverse and sets its value in the cache using the "setinverse" function.
 ## The function "cacheSolve" assumes that the matrix is always invertible.
 
-cacheSolve <- function(x, ...) {                 ## Initialization of the function which requires a matrixCacheMatrix object
+cacheSolve <- function(x, ...) {                 ## Initialization of the function which requires a makeCacheMatrix object
         m <- x$getinverse()                      ## Goes to the 'x' environment and assigns the 'm' value from the 'x' environment 
                                                  ## to this one 
         if(!is.null(m)) {                        ## If the old cache value DOES exist
